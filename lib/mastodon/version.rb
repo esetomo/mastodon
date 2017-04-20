@@ -24,21 +24,26 @@ module Mastodon
       ''
     end
 
+    def revision
+      f = Rails.root.join('REVISION')
+      f.readable? ? f.read(7) : nil
+    end
+
     def to_a
       [major, minor, patch, pre].compact
     end
 
     def to_s
-      [to_a.join('.'), flags].join
+      [to_a.join('.'), flags, '-', revision].join
     end
 
     def source_base_url
-      'https://github.com/tootsuite/mastodon'
+      'https://github.com/esetomo/mastodon'
     end
 
     # specify git tag or commit hash here
     def source_tag
-      nil
+      'mayodon.club'
     end
 
     def source_url
