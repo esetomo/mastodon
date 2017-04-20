@@ -77,7 +77,7 @@ const IconButton = React.createClass({
             className={classes.join(' ')}
             onClick={this.handleClick}
             style={style}>
-            <i style={{ transform: `rotate(${rotate}deg)` }} className={`fa fa-fw fa-${this.props.icon}`} aria-hidden='true' />
+            <i style={{ transform: `rotate(${rotate}deg)` }} className={`fa fa-fw fa-${this.props.icon} ${this.props.active ? 'active' : 'inactive'}`} aria-hidden='true' />
           </button>
         }
       </Motion>

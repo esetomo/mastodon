@@ -1,0 +1,39 @@
+
+.fa-iine {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: image-url('iine.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    &.fa-fw {
+	width: 22px;
+	height: 16px;
+    }
+
+    &.active {
+	background-image: image-url('iine.svg');
+    }
+
+    &.inactive {
+	background-image: image-url('irane.svg');
+    }
+
+    &--column {
+	@extend .fa-iine;
+	background-image: image-url('iine-column.svg');
+    }
+
+    &--status {
+	@extend .fa-iine;
+	background-image: image-url('iine-status.svg');
+    }
+
+    &--detailed {
+	@extend .fa-iine;
+	background-image: image-url('iine-detailed.svg');
+	vertical-align: middle;
+    }
+}
