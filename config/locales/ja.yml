@@ -183,6 +183,7 @@ ja:
     resend_confirmation: 確認メールを再送する
     reset_password: パスワードを再発行
     set_new_password: 新しいパスワード
+    login_with_other_instance: 連携先アカウントでログイン
   authorize_follow:
     error: 残念ながら、リモートアカウントにエラーが発生しました。
     follow: フォロー
@@ -277,6 +278,7 @@ ja:
     preferences: ユーザー設定
     settings: 設定
     two_factor_auth: 二段階認証
+    instances: インスタンス連携
   statuses:
     open_in_web: Webで開く
     over_character_limit: 上限は %{max}文字までです
@@ -309,3 +311,9 @@ ja:
   users:
     invalid_email: メールアドレスが無効です
     invalid_otp_token: 二段階認証コードが間違っています
+  instances:
+    account: アカウント
+    reboke: 解除
+    add: 追加
+    confirmations:
+      revoke: 解除してよろしいですか？

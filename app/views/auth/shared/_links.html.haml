@@ -10,3 +10,7 @@
 
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
     %li= link_to t('auth.didnt_get_confirmation'), new_confirmation_path(resource_name)
+
+  - if true
+    - session[:identifier] = nil
+    %li= link_to t('auth.login_with_other_instance'), user_mastodon_omniauth_authorize_path

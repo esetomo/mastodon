@@ -61,6 +61,8 @@ class Account < ApplicationRecord
   has_many :reports
   has_many :targeted_reports, class_name: 'Report', foreign_key: :target_account_id
 
+  has_many :other_instance_accounts
+  
   scope :remote, -> { where.not(domain: nil) }
   scope :local, -> { where(domain: nil) }
   scope :without_followers, -> { where('(select count(f.id) from follows as f where f.target_account_id = accounts.id) = 0') }
