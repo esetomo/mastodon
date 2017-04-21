@@ -244,6 +244,20 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  config.omniauth :mastodon, scope: '', credentials: lambda { |domain, callback_url|
+    Rails.logger.info "Requested credentials for #{domain} with callback URL #{callback_url}"
+
+    existing = MastodonClient.find_by(domain: domain)
+    return [existing.client_id, existing.client_secret] unless existing.nil?
+
+    client = Mastodon::REST::Client.new(base_url: "https://#{domain}")
+    app = client.create_app("Remote Mastodon #{Mastodon::Application.config.x.local_domain}", callback_url)
+
+    MastodonClient.create!(domain: domain, client_id: app.client_id, client_secret: app.client_secret)
+
+    [app.client_id, app.client_secret]
+  }
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

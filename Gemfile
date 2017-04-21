@@ -62,6 +62,9 @@ gem 'whatlanguage'
 gem 'react-rails'
 gem 'browserify-rails'
 gem 'autoprefixer-rails'
+gem 'omniauth'
+gem 'omniauth-mastodon'
+gem 'mastodon-api', :require => 'mastodon'
 
 group :development, :test do
   gem 'rspec-rails'

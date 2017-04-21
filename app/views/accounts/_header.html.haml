@@ -14,7 +14,10 @@
     %span.p-name.emojify= display_name(account)
     %small
       %span= "@#{account.username}"
-      = fa_icon('lock') if account.locked?
+      - account.other_instance_accounts.each do |other|
+        %br
+        %span= link_to other.uid, other.url            
+      = fa_icon('lock') if account.locked?      
   .details
     .bio
       .account__header__content.p-note.emojify= Formatter.instance.simplified_format(account)

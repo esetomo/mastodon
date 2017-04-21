@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418160728) do
+ActiveRecord::Schema.define(version: 20170421174400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,12 @@ ActiveRecord::Schema.define(version: 20170418160728) do
     t.datetime "data_updated_at"
   end
 
+  create_table "mastodon_clients", force: :cascade do |t|
+    t.string "domain"
+    t.string "client_id"
+    t.string "client_secret"
+  end
+
   create_table "media_attachments", force: :cascade do |t|
     t.bigint   "status_id"
     t.string   "file_file_name"
@@ -131,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170418160728) do
     t.datetime "updated_at", null: false
     t.index ["account_id", "status_id"], name: "index_mentions_on_account_id_and_status_id", unique: true, using: :btree
     t.index ["status_id"], name: "index_mentions_on_status_id", using: :btree
+    t.index ["status_id"], name: "mentions_status_id_index", using: :btree
   end
 
   create_table "mutes", force: :cascade do |t|
@@ -189,6 +196,14 @@ ActiveRecord::Schema.define(version: 20170418160728) do
     t.boolean  "superapp",     default: false, null: false
     t.string   "website"
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+  end
+
+  create_table "other_instance_accounts", force: :cascade do |t|
+    t.integer "account_id"
+    t.string  "uid",        null: false
+    t.string  "url",        null: false
+    t.index ["account_id"], name: "index_other_instance_accounts_on_account_id", using: :btree
+    t.index ["uid"], name: "index_other_instance_accounts_on_uid", using: :btree
   end
 
   create_table "preview_cards", force: :cascade do |t|
