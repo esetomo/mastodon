@@ -1,0 +1,25 @@
+
+
+$connect-account--margin: 10px;
+$connect-account--height: 24px;
+
+.sl-connect-account {
+  position: relative;
+  width: 100%;
+  height: $connect-account--height;
+  padding: 0 $connect-account--margin;
+  margin: $connect-account--margin 0;
+  box-sizing: border-box;
+
+  a {
+    cursor: pointer;
+    color: #9baec8;
+    text-decoration: none;
+  }
+
+  &__label {
+    line-height: $connect-account--height;
+    padding-left: 5;
+    font-weight: 600;
+  }
+}
