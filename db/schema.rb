@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421174400) do
+ActiveRecord::Schema.define(version: 20170422060921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,14 +198,6 @@ ActiveRecord::Schema.define(version: 20170421174400) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
-  create_table "other_instance_accounts", force: :cascade do |t|
-    t.integer "account_id"
-    t.string  "uid",        null: false
-    t.string  "url",        null: false
-    t.index ["account_id"], name: "index_other_instance_accounts_on_account_id", using: :btree
-    t.index ["uid"], name: "index_other_instance_accounts_on_uid", using: :btree
-  end
-
   create_table "preview_cards", force: :cascade do |t|
     t.bigint   "status_id"
     t.string   "url",                default: "", null: false
@@ -218,6 +210,13 @@ ActiveRecord::Schema.define(version: 20170421174400) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["status_id"], name: "index_preview_cards_on_status_id", unique: true, using: :btree
+  end
+
+  create_table "remote_accounts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_remote_accounts_on_account_id", using: :btree
+    t.index ["user_id"], name: "index_remote_accounts_on_user_id", using: :btree
   end
 
   create_table "reports", force: :cascade do |t|
