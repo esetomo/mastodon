@@ -1,0 +1,18 @@
+- content_for :page_title do
+  = t('settings.remote_accounts')
+
+%table.table
+  %thead
+    %tr
+      %th= t('remote_accounts.account')
+      %th
+  %tbody
+    - current_user.remote_accounts.each do |remote|
+      - account = remote.account
+      %tr
+        %td
+          = link_to "#{account.username}@#{account.domain}", account.url
+        %td
+          = table_link_to 'times', t('remote_accounts.revoke'), settings_remote_account_path(remote), method: :delete, data: { confirm: t('remote_accounts.confirmations.revoke') }
+
+= link_to t('remote_accounts.add'), new_settings_remote_account_path

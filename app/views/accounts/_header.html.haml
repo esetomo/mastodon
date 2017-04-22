@@ -14,9 +14,11 @@
     %span.p-name.emojify= display_name(account)
     %small
       %span= "@#{account.username}"
-      - account.other_instance_accounts.each do |other|
-        %br
-        %span= link_to other.uid, other.url            
+      - user = account.user
+      - if user
+        - user.remote_accounts.each do |remote|
+          %br
+          %span= link_to "@#{remote.account.username}@#{remote.account.domain}", remote.account.url, style: 'text-decoration: none; color: inherit'
       = fa_icon('lock') if account.locked?      
   .details
     .bio

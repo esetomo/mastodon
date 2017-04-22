@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       resource :confirmation, only: [:new, :create]
     end
 
-    resources :instances
+    resources :remote_accounts
   end
 
   resources :media, only: [:show]
