@@ -116,6 +116,17 @@ class Header extends React.Component {
       lockedIcon = <i className='fa fa-lock' />;
     }
 
+    let remote_accounts = [];
+    if(account.get('remote_accounts')){
+      remote_accounts = account.get('remote_accounts').map(function(remote){
+        return (
+          <span className='account__header__username' style={{ fontSize: '14px', fontWeight: '400', display: 'block', marginTop: '-8px', marginBottom: '10px' }}>
+            <a href={remote.get('url')} style={{ textDecoration: 'none', color: 'inherit' }}>@{remote.get('username')}@{remote.get('domain')}</a>
+          </span>
+        );
+      });
+    }
+    
     const content         = { __html: emojify(account.get('note')) };
     const displayNameHTML = { __html: emojify(escapeTextContentForBrowser(displayName)) };
 
@@ -126,6 +137,7 @@ class Header extends React.Component {
 
           <span style={{ display: 'inline-block', fontSize: '20px', lineHeight: '27px', fontWeight: '500' }} className='account__header__display-name' dangerouslySetInnerHTML={displayNameHTML} />
           <span className='account__header__username' style={{ fontSize: '14px', fontWeight: '400', display: 'block', marginBottom: '10px' }}>@{account.get('acct')} {lockedIcon}</span>
+          {remote_accounts}
           <div style={{ fontSize: '14px' }} className='account__header__content' dangerouslySetInnerHTML={content} />
 
           {info}
