@@ -30,10 +30,9 @@ const shortnameToImage = str => str.replace(emojione.regShortNames, shortname =>
   return `<img draggable="false" class="emojione" alt="${alt}" src="/emoji/${unicode}.svg" />`;
 });
 
-const iineToImage = str => str.replace(/:(iine|irane)(\d*):/g, (match, iine, deg) => {
+const iineToImage = str => str.replace(/:(iine|irane|nicoru)(\d*):/g, (match, icon, deg) => {
   deg = deg ? deg : 0;
-  status = iine == 'iine' ? 'active' : 'inactive';
-  return `<i class="fa-iine ${status}" style="transform:rotate(${deg}deg);"></i>`;
+  return `<i class="fa-${icon}" style="transform:rotate(${deg}deg);"></i>`;
 });
 
 export default function emojify(text) {
