@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 module StyleHelper
-  def stylesheet_for_layout
+  def stylesheets_for_layout
     theme_asset = current_user&.setting_theme && "themes/#{current_user&.setting_theme}/application.css"
     if theme_asset && asset_exist?(theme_asset)
-      theme_asset
+      [theme_asset, 'local']
     elsif asset_exist? 'custom.css'
-      'custom'
+      ['custom']
     else
-      'application'
+      ['application']
     end
   end
 
