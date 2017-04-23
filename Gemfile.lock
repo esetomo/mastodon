@@ -101,6 +101,7 @@ GEM
     case_transform (0.2)
       activesupport
     charlock_holmes (0.7.5)
+    chronic (0.10.2)
     chunky_png (1.3.8)
     cld3 (3.2.1)
       ffi (>= 1.1.0, < 1.10.0)
@@ -528,6 +529,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    whenever (0.9.7)
+      chronic (>= 0.6.3)
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -633,6 +636,7 @@ DEPENDENCIES
   webmock (~> 3.0)
   webpacker (~> 3.0)
   webpush
+  whenever
 
 RUBY VERSION
    ruby 2.4.2p198
