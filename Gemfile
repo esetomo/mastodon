@@ -59,6 +59,7 @@ gem 'statsd-instrument'
 gem 'twitter-text'
 gem 'tzinfo-data'
 gem 'whatlanguage'
+gem 'whenever', require: []
 
 gem 'react-rails'
 gem 'browserify-rails'
