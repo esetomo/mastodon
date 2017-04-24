@@ -65,6 +65,7 @@ Rails.application.routes.draw do
       resource :confirmation, only: [:new, :create]
     end
 
+    resource :follower_domains, only: [:show, :update]
     resources :remote_accounts
   end
 
@@ -112,9 +113,7 @@ Rails.application.routes.draw do
     # ActivityPub
     namespace :activitypub do
       get '/users/:id/outbox', to: 'outbox#show', as: :outbox
-
       get '/statuses/:id', to: 'activities#show_status', as: :status
-
       resources :notes, only: [:show]
     end
 
