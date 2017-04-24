@@ -1,0 +1,35 @@
+- content_for :page_title do
+  = t('admin.secondlife.title')
+
+- if @secondlife_secret
+  %pre
+    :plain
+      string secret = "#{@secondlife_secret}";
+      string callback = "#{user_secondlife_omniauth_callback_url}";
+      key http_request_id;
+      
+      default
+      {
+          state_entry()
+          {
+          
+              string json = llList2Json(JSON_OBJECT, ["secret", secret, "region", llGetRegionName(), "pos", llGetPos()]);
+              http_request_id = llHTTPRequest(callback,
+                                              [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/json"],
+                                              json);
+          }
+
+          http_response(key request_id, integer status, list metadata, string body)
+          {
+              if(request_id == http_request_id)
+              {
+                  llOwnerSay((string)status);
+                  llOwnerSay(llDumpList2String(metadata, ":"));
+                  llOwnerSay(body);
+              }
+          }
+      }
+  
+
+= link_to t('admin.secondlife.renew_secret'), admin_secondlife_path, method: :patch, data: { confirm: t('admin.secondlife.confirmations.renew_secret') }
+  

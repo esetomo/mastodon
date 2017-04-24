@@ -92,6 +92,8 @@ Rails.application.routes.draw do
       resource :suspension, only: [:create, :destroy]
       resource :confirmation, only: [:create]
     end
+
+    resource :secondlife
   end
 
   get '/admin', to: redirect('/admin/settings', status: 302)
