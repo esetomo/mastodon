@@ -17,4 +17,7 @@ class Auth::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
   end
+
+  def secondlife
+  end
 end

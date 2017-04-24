@@ -16,3 +16,4 @@
           = table_link_to 'times', t('remote_accounts.revoke'), settings_remote_account_path(remote), method: :delete, data: { confirm: t('remote_accounts.confirmations.revoke') }
 
 = link_to t('remote_accounts.add'), new_settings_remote_account_path
+= link_to t('remote_accounts.connect_to_secondlife'), user_secondlife_omniauth_authorize_path
