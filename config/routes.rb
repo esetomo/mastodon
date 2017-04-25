@@ -72,6 +72,7 @@ Rails.application.routes.draw do
 
     resource :follower_domains, only: [:show, :update]
     resources :remote_accounts
+    resources :secondlife_accounts
   end
 
   resources :media, only: [:show]

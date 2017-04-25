@@ -1,6 +1,8 @@
 - content_for :page_title do
   = t('settings.remote_accounts')
 
+%h2= t('remote_accounts.other_mastodon')
+  
 %table.table
   %thead
     %tr
@@ -14,6 +16,27 @@
           = link_to "#{account.username}@#{account.domain}", account.url
         %td
           = table_link_to 'times', t('remote_accounts.revoke'), settings_remote_account_path(remote), method: :delete, data: { confirm: t('remote_accounts.confirmations.revoke') }
+    %tr
+      %td
+      %td
+        = table_link_to 'plus', t('remote_accounts.add'), new_settings_remote_account_path
 
-= link_to t('remote_accounts.add'), new_settings_remote_account_path
-= link_to t('remote_accounts.connect_to_secondlife'), user_secondlife_omniauth_authorize_path
+%h2= t('secondlife_accounts.secondlife')
+
+%table.table
+  %thead
+    %tr
+      %th= t('secondlife_accounts.account')
+      %th
+  %tbody
+    - current_user.secondlife_accounts.each do |sl|
+      %tr
+        %td
+          = link_to "#{sl.display_name} (#{sl.user_name})", "https://my.secondlife.com/#{sl.user_name}"
+        %td
+          = table_link_to 'times', t('secondlife_accounts.revoke'), settings_secondlife_account_path(sl), method: :delete, data: { confirm: t('secondlife_accounts.confirmations.revoke') }
+    %tr
+      %td
+      %td         
+        = table_link_to 'plus', t('secondlife_accounts.connect'), new_settings_secondlife_account_path
+        
