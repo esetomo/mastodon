@@ -1,0 +1,62 @@
+- content_for :page_title do
+  = t('admin.secondlife.title')
+
+- if @setting.avatar_uuid.present?
+  %textarea(style="width:100%" rows="50" readonly)
+    :plain
+      string callback = "#{user_secondlife_omniauth_callback_url}";
+      key http_request_id;
+      key avatar_id;
+      
+      default {
+          state_entry() {
+              http_request_id = llHTTPRequest(callback + "/regist_object", [], "");
+          }
+
+          http_response(key request_id, integer status, list metadata, string body) {
+              if (request_id == http_request_id) {
+                  if (status == 200) {
+                      state service;
+                  } else {
+                      llOwnerSay((string)status);
+                      llOwnerSay(body);
+                  }
+              }
+          }
+      }
+
+      state service {
+          state_entry() {
+              llOwnerSay("standby");
+          }
+          
+          touch_start(integer total_number) {
+              avatar_id = llDetectedKey(0);
+              string data = llList2Json(JSON_OBJECT,
+                                        ["key", avatar_id,
+                                         "lagacy_name", llDetectedName(0),
+                                         "display_name", llGetDisplayName(avatar_id),
+                                         "user_name", llGetUsername(avatar_id)]);
+              http_request_id = llHTTPRequest(callback + "/regist_user",
+                                              [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/json;charset=utf-8"],
+                                              data);
+          }
+
+          http_response(key request_id, integer status, list metadata, string body) {
+              if (request_id == http_request_id) {
+                  if (status == 200) {
+                      string token = llJsonGetValue(body, ["token"]);
+                      llLoadURL(avatar_id, "", callback + "?token=" + token);
+                  } else {
+                      llOwnerSay((string)status);
+                      llOwnerSay(body);
+                  }
+              }
+          }
+      }
+
+= simple_form_for @setting, as: :setting, url: admin_secondlife_path, method: 'patch' do |f|
+  = f.input :avatar_uuid, placeholder: t('admin.secondlife.labels.avatar_uuid')
+  = f.submit
+
+

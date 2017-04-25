@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'auth/omniauth_callbacks',
   }
 
+  devise_scope :user do
+    get '/auth/auth/secondlife/callback/regist_object', to: 'auth/omniauth_callbacks#secondlife_regist_object'
+    post '/auth/auth/secondlife/callback/regist_user', to: 'auth/omniauth_callbacks#secondlife_regist_user'
+  end
+
   get '/users/:username', to: redirect('/@%{username}'), constraints: { format: :html }
 
   resources :accounts, path: 'users', only: [:show], param: :username do
@@ -67,6 +72,7 @@ Rails.application.routes.draw do
 
     resource :follower_domains, only: [:show, :update]
     resources :remote_accounts
+    resources :secondlife_accounts
   end
 
   resources :media, only: [:show]
@@ -92,6 +98,8 @@ Rails.application.routes.draw do
       resource :suspension, only: [:create, :destroy]
       resource :confirmation, only: [:create]
     end
+
+    resource :secondlife
   end
 
   get '/admin', to: redirect('/admin/settings', status: 302)

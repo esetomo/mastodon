@@ -167,6 +167,10 @@ ja:
         title: サイトの詳細な説明
       site_title: サイトのタイトル
       title: サイト設定
+    secondlife:
+      title: Second Life
+      labels:
+        avatar_uuid: 管理アバターのUUID
     title: 管理
   application_mailer:
     settings: 'メール設定の変更: %{link}'
@@ -313,8 +317,16 @@ ja:
     invalid_email: メールアドレスが無効です
     invalid_otp_token: 二段階認証コードが間違っています
   remote_accounts:
+    other_mastodon: 他のマストドン
     account: アカウント
     revoke: 解除
     add: 追加
+    confirmations:
+      revoke: 解除してよろしいですか？
+  secondlife_accounts:
+    secondlife: Second Life
+    account: アカウント
+    revoke: 解除
+    connect: 連携
     confirmations:
       revoke: 解除してよろしいですか？

@@ -14,6 +14,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :account
 
   has_many :remote_accounts, inverse_of: :user
+  has_many :secondlife_accounts, inverse_of: :user
 
   validates :locale, inclusion: I18n.available_locales.map(&:to_s), unless: 'locale.nil?'
   validates :email, email: true

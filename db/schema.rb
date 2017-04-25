@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424112722) do
+ActiveRecord::Schema.define(version: 20170425131924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,6 +230,20 @@ ActiveRecord::Schema.define(version: 20170424112722) do
     t.integer  "action_taken_by_account_id"
     t.index ["account_id"], name: "index_reports_on_account_id", using: :btree
     t.index ["target_account_id"], name: "index_reports_on_target_account_id", using: :btree
+  end
+
+  create_table "secondlife_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.string   "user_name"
+    t.string   "display_name"
+    t.string   "legacy_name"
+    t.string   "token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["key"], name: "index_secondlife_accounts_on_key", using: :btree
+    t.index ["token"], name: "index_secondlife_accounts_on_token", using: :btree
+    t.index ["user_id"], name: "index_secondlife_accounts_on_user_id", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
