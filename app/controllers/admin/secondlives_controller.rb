@@ -3,13 +3,13 @@
 module Admin
   class SecondlivesController < BaseController
     def show
-      @secondlife_secret = Setting.find_by(var: 'secondlife_secret')&.value
-      @secondlife_land_url = Setting.find_by(var: 'secondlife_land_url')&.value
+      @setting = OpenStruct.new
+      @setting.avatar_uuid = Setting.find_by(var: 'secondlife_avatar_uuid')&.value
     end
 
     def update
-      setting = Setting.find_or_initialize_by(var: 'secondlife_secret')
-      setting.update(value: ActiveRecord::Base.generate_unique_secure_token)
+      setting = Setting.find_or_initialize_by(var: 'secondlife_avatar_uuid')
+      setting.update(value: params[:setting][:avatar_uuid])
         
       redirect_to admin_secondlife_url
     end

@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'auth/omniauth_callbacks',
   }
 
+  devise_scope :user do
+    get '/auth/auth/secondlife/callback/regist_object', to: 'auth/omniauth_callbacks#secondlife_regist_object'
+    post '/auth/auth/secondlife/callback/regist_user', to: 'auth/omniauth_callbacks#secondlife_regist_user'
+  end
+
   get '/users/:username', to: redirect('/@%{username}'), constraints: { format: :html }
 
   resources :accounts, path: 'users', only: [:show], param: :username do
