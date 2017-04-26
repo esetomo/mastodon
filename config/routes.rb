@@ -198,6 +198,10 @@ Rails.application.routes.draw do
       resource :account do
         get :callback
       end
+      resource :script
+      resource :proxy do
+        get :callback
+      end
     end
   end
 

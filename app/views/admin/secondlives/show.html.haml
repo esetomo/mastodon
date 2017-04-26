@@ -58,4 +58,50 @@
   = f.input :avatar_uuid, placeholder: t('admin.secondlife.labels.avatar_uuid')
   = f.submit
 
+%textarea(style="width:100%" rows="50" readonly)
+  :plain
+    string url = "";
+    string client_id = "";
+    string client_secret = "";
+    string token = "";
+    
+    default {
+        state_entry() {
+            llReleaseURL(url);
+            llRequestSecureURL();
+        }
 
+        on_rez(integer param) {
+            llReleaseURL(url);
+            llRequestSecureURL();
+        }
+
+        changed(integer change) {
+            if (change & (CHANGED_REGION | CHANGED_TELEPORT | CHANGED_REGION_START)) {
+                llReleaseURL(url);
+                llRequestSecureURL();
+            }
+        }
+
+        http_request(key id, string method, string body) {
+            if (method == URL_REQUEST_GRANTED) {
+                string data = llList2Json(JSON_OBJECT,
+                                          ["script_url", body]);
+                llHTTPRequest("#{api_sl_script_url}",
+                              [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/json;charset=utf-8"],
+                              data);
+                llOwnerSay("free urls:" + (string)llGetFreeURLs());
+            } else if(method == URL_REQUEST_DENIED) {
+                llOwnerSay(body);
+            } else {
+                llHTTPResponse(id, 200, "OK");
+            }
+        }
+
+        http_response(key id, integer status, list meta, string body) {
+            llOwnerSay(body);
+            if (body == "script registered" && token == "") {
+                llLoadURL(llGetOwner(), "", "#{api_sl_proxy_url}?_method=post&domain=" + llGetObjectDesc());
+            }
+        }
+    }

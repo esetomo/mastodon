@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425131924) do
+ActiveRecord::Schema.define(version: 20170426145253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -245,6 +245,25 @@ ActiveRecord::Schema.define(version: 20170425131924) do
     t.index ["key"], name: "index_secondlife_accounts_on_key", using: :btree
     t.index ["token"], name: "index_secondlife_accounts_on_token", using: :btree
     t.index ["user_id"], name: "index_secondlife_accounts_on_user_id", using: :btree
+  end
+
+  create_table "secondlife_proxies", force: :cascade do |t|
+    t.string   "domain",        null: false
+    t.string   "client_id",     null: false
+    t.string   "client_secret", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["domain"], name: "index_secondlife_proxies_on_domain", using: :btree
+  end
+
+  create_table "secondlife_scripts", force: :cascade do |t|
+    t.integer  "secondlife_account_id"
+    t.string   "prim_key"
+    t.string   "script_url"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["prim_key"], name: "index_secondlife_scripts_on_prim_key", using: :btree
+    t.index ["secondlife_account_id"], name: "index_secondlife_scripts_on_secondlife_account_id", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
