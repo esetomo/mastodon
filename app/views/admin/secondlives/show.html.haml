@@ -4,13 +4,12 @@
 - if @setting.avatar_uuid.present?
   %textarea(style="width:100%" rows="50" readonly)
     :plain
-      string callback = "#{user_secondlife_omniauth_callback_url}";
       key http_request_id;
       key avatar_id;
       
       default {
           state_entry() {
-              http_request_id = llHTTPRequest(callback + "/regist_object", [], "");
+              http_request_id = llHTTPRequest("#{api_sl_terminal_url}", [HTTP_METHOD, "POST"], "");
           }
 
           http_response(key request_id, integer status, list metadata, string body) {
@@ -37,7 +36,7 @@
                                          "lagacy_name", llDetectedName(0),
                                          "display_name", llGetDisplayName(avatar_id),
                                          "user_name", llGetUsername(avatar_id)]);
-              http_request_id = llHTTPRequest(callback + "/regist_user",
+              http_request_id = llHTTPRequest("#{api_sl_account_url}",
                                               [HTTP_METHOD, "POST", HTTP_MIMETYPE, "application/json;charset=utf-8"],
                                               data);
           }
@@ -46,7 +45,7 @@
               if (request_id == http_request_id) {
                   if (status == 200) {
                       string token = llJsonGetValue(body, ["token"]);
-                      llLoadURL(avatar_id, "", callback + "?token=" + token);
+                      llLoadURL(avatar_id, "", "#{callback_api_sl_account_url}?token=" + token);
                   } else {
                       llOwnerSay((string)status);
                       llOwnerSay(body);
