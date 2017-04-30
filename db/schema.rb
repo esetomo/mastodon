@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170425131924) do
-=======
-ActiveRecord::Schema.define(version: 20170425202925) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 20180428000000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +54,20 @@ ActiveRecord::Schema.define(version: 20170425202925) do
     t.index ["username", "domain"], name: "index_accounts_on_username_and_domain", unique: true, using: :btree
   end
 
+  create_table "block_mutes", force: :cascade do |t|
+    t.integer  "account_id",        null: false
+    t.integer  "target_account_id", null: false
+    t.boolean  "block",             null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "blocks", force: :cascade do |t|
     t.integer  "account_id",        null: false
     t.integer  "target_account_id", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.boolean  "block",             null: false
     t.index ["account_id", "target_account_id"], name: "index_blocks_on_account_id_and_target_account_id", unique: true, using: :btree
   end
 
@@ -150,6 +155,7 @@ ActiveRecord::Schema.define(version: 20170425202925) do
     t.integer  "target_account_id", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.boolean  "block",             null: false
     t.index ["account_id", "target_account_id"], name: "index_mutes_on_account_id_and_target_account_id", unique: true, using: :btree
   end
 
@@ -257,6 +263,16 @@ ActiveRecord::Schema.define(version: 20170425202925) do
     t.index ["key"], name: "index_secondlife_accounts_on_key", using: :btree
     t.index ["token"], name: "index_secondlife_accounts_on_token", using: :btree
     t.index ["user_id"], name: "index_secondlife_accounts_on_user_id", using: :btree
+  end
+
+  create_table "secondlife_scripts", force: :cascade do |t|
+    t.integer  "secondlife_account_id"
+    t.string   "prim_key"
+    t.string   "script_url"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["prim_key"], name: "index_secondlife_scripts_on_prim_key", using: :btree
+    t.index ["secondlife_account_id"], name: "index_secondlife_scripts_on_secondlife_account_id", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
