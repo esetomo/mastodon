@@ -200,7 +200,6 @@ ja:
     resend_confirmation: 確認メールを再送する
     reset_password: パスワードを再発行
     set_new_password: 新しいパスワード
-    login_with_other_instance: 連携先アカウントでログイン
   authorize_follow:
     error: 残念ながら、リモートアカウントにエラーが発生しました。
     follow: フォロー
