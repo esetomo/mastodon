@@ -110,7 +110,7 @@
         background: $ui-primary-color;
 
         &:hover {
-          background: lighten($ui-primary-color, 8%);
+          background: darken($ui-primary-color, 8%);
         }
       }
     }
@@ -185,7 +185,7 @@
         background: $ui-primary-color;
 
         &:hover {
-          background: lighten($ui-primary-color, 8%);
+          background: darken($ui-primary-color, 8%);
         }
       }
     }
@@ -313,7 +313,7 @@
     z-index: 2;
 
     &:hover {
-      background: darken($ui-primary-color, 5%);
+      background: lighten($ui-primary-color, 5%);
     }
 
     span {
