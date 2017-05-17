@@ -227,7 +227,7 @@
 
   .disabled {
     cursor: default;
-    color: darken($ui-base-color, 10%);
+    color: $ui-base-color;
   }
 
   @media screen and (max-width: 360px) {
