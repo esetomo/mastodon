@@ -2,7 +2,6 @@
   .wrapper {
     max-width: 600px;
     margin: 0 auto;
-    color: $ui-primary-color;
     padding-top: 50px;
     padding-bottom: 50px;
 
@@ -15,7 +14,6 @@
     font: 46px/52px 'mastodon-font-sans-serif', sans-serif;
     font-weight: 600;
     margin-bottom: 20px;
-    color: $ui-highlight-color;
     padding: 20px 0;
 
     img {
@@ -32,7 +30,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $primary-text-color;
   }
 
   h3 {
@@ -41,7 +38,6 @@
     line-height: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: $ui-secondary-color;
   }
 
   ul,
@@ -70,7 +66,6 @@
     margin-bottom: 12px;
 
     a {
-      color: $ui-highlight-color;
       text-decoration: underline;
     }
   }
@@ -79,14 +74,11 @@
     display: inline-block;
     padding: 7px 7px 5px;
     margin: 0 2px;
-    background: $ui-primary-color;
-    color: $ui-base-color;
     font: 16px/16px 'mastodon-font-sans-serif', sans-serif;
     font-weight: 300;
   }
 
   .screenshot {
-    box-shadow: 0 0 15px rgba($base-shadow-color, 0.4);
     margin-bottom: 26px;
 
     img {
@@ -106,7 +98,6 @@
       line-height: 36px;
 
       a {
-        color: $ui-primary-color;
         text-decoration: underline;
       }
     }
@@ -127,8 +118,8 @@
   margin: 20px 0;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid $ui-base-color;
-  border-bottom: 1px solid $ui-base-color;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
   padding-right: 14px;
 
   .section {
@@ -146,7 +137,6 @@
       font-size: 16px;
 
       &:last-child {
-        color: $ui-secondary-color;
         font-size: 14px;
       }
     }
@@ -155,7 +145,6 @@
       font-weight: 500;
       font-size: 32px;
       line-height: 48px;
-      color: $primary-text-color;
     }
   }
 
@@ -190,7 +179,6 @@
 
     a {
       display: block;
-      color: $primary-text-color;
       text-decoration: none;
 
       &:hover {
@@ -202,7 +190,6 @@
 
     .username {
       display: block;
-      color: $ui-primary-color;
     }
   }
 }
@@ -213,7 +200,6 @@
 
   strong {
     display: block;
-    color: $primary-text-color;
     word-break: break-word;
   }
 }
@@ -231,14 +217,13 @@
   }
 
   .sidebar {
-    border-left: 1px solid $ui-base-color;
+    border-left: 1px solid;
     width: 200px;
     flex: 0 0 auto;
   }
 
   .panel {
     .panel-header {
-      background: $ui-base-color;
       padding: 7px 14px;
       text-transform: uppercase;
       font-size: 12px;
@@ -263,7 +248,6 @@
           a {
             display: block;
             padding: 7px 14px;
-            color: rgba($primary-text-color, 0.7);
             text-decoration: none;
             transition: all 200ms linear;
 
@@ -272,17 +256,11 @@
             }
 
             &:hover {
-              color: $primary-text-color;
-              background-color: $ui-base-color;
               transition: all 100ms linear;
             }
 
             &.selected {
-              color: $primary-text-color;
-              background-color: $ui-highlight-color;
-
               &:hover {
-                background-color: $ui-highlight-color;
               }
             }
           }
@@ -295,7 +273,7 @@
     flex-direction: column;
 
     .sidebar {
-      border: 1px solid $ui-base-color;
+      border: 1px solid;
       width: auto;
     }
   }
@@ -341,10 +319,8 @@
   .closed-registrations-message {
     width: 300px;
     flex: 0 0 auto;
-    background: rgba($ui-base-color, 0.5);
     padding: 14px;
     border-radius: 4px;
-    box-shadow: 0 0 15px rgba($base-shadow-color, 0.4);
 
     .actions {
       margin-bottom: 0;
@@ -354,7 +330,6 @@
       text-align: center;
 
       a {
-        color: $ui-secondary-color;
       }
     }
   }
