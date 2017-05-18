@@ -147,15 +147,19 @@ code {
 
   .actions {
     margin-top: 30px;
+    display: flex;
   }
 
   button,
+  .button,
   .block-button {
     display: block;
     width: 100%;
     border: 0;
     border-radius: 4px;
     font-size: 18px;
+    line-height: inherit;
+    height: auto;
     padding: 10px;
     text-transform: uppercase;
     text-decoration: none;
@@ -165,6 +169,11 @@ code {
     font-weight: 500;
     outline: 0;
     margin-bottom: 10px;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &:hover {
     }
