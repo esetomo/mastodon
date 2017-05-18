@@ -44,18 +44,18 @@
 
         &:hover {
           color: $primary-text-color;
-          background-color: lighten($ui-base-color, 5%);
+          background-color: darken($ui-base-color, 5%);
           transition: all 100ms linear;
         }
 
         &.selected {
-          background: lighten($ui-base-color, 2%);
+          background: darken($ui-base-color, 2%);
           border-radius: 4px 0 0;
         }
       }
 
       ul {
-        background: lighten($ui-base-color, 4%);
+        background: darken($ui-base-color, 4%);
         border-radius: 0 0 0 4px;
         margin: 0;
 
@@ -69,7 +69,7 @@
             border-radius: 0;
 
             &:hover {
-              background-color: darken($ui-highlight-color, 5%);
+              background-color: lighten($ui-highlight-color, 5%);
             }
           }
         }
@@ -194,7 +194,7 @@
 
       &:hover {
         color: $primary-text-color;
-        border-bottom: 2px solid darken($ui-base-color, 5%);
+        border-bottom: 2px solid lighten($ui-base-color, 5%);
       }
 
       &.selected {

@@ -190,26 +190,26 @@ code {
     }
 
     &:hover {
-      background-color: darken($ui-highlight-color, 5%);
+      background-color: lighten($ui-highlight-color, 5%);
     }
 
     &:active,
     &:focus {
       position: relative;
       top: 1px;
-      background-color: lighten($ui-highlight-color, 5%);
+      background-color: darken($ui-highlight-color, 5%);
     }
 
     &.negative {
       background: $error-value-color;
 
       &:hover {
-        background-color: darken($error-value-color, 5%);
+        background-color: lighten($error-value-color, 5%);
       }
 
       &:active,
       &:focus {
-        background-color: lighten($error-value-color, 5%);
+        background-color: darken($error-value-color, 5%);
       }
     }
   }
