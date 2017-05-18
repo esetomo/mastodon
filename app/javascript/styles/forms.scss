@@ -16,6 +16,7 @@ code {
 
   span.hint {
     display: block;
+    color: $ui-primary-color;
     font-size: 12px;
     margin-top: 4px;
   }
@@ -50,6 +51,7 @@ code {
     label {
       font-family: inherit;
       font-size: 16px;
+      color: $primary-text-color;
       display: block;
       padding-top: 5px;
     }
@@ -63,6 +65,7 @@ code {
     margin-bottom: 5px;
     font-family: inherit;
     font-size: 14px;
+    color: $primary-text-color;
     display: block;
     width: auto;
   }
@@ -73,6 +76,7 @@ code {
     label {
       font-family: inherit;
       font-size: 14px;
+      color: $primary-text-color;
       display: block;
       width: auto;
     }
@@ -104,10 +108,11 @@ code {
     background: transparent;
     box-sizing: border-box;
     border: 0;
-    border-bottom: 2px solid;
+    border-bottom: 2px solid $ui-primary-color;
     border-radius: 2px 2px 0 0;
     padding: 7px 4px;
     font-size: 16px;
+    color: $primary-text-color;
     display: block;
     width: 100%;
     outline: 0;
@@ -119,28 +124,35 @@ code {
     }
 
     &:focus:invalid {
+      border-bottom-color: $error-value-color;
     }
 
     &:required:valid {
+      border-bottom-color: $valid-value-color;
     }
 
     &:active,
     &:focus {
+      border-bottom-color: $ui-highlight-color;
+      background: rgba($base-overlay-background, 0.1);
     }
   }
 
   .input.field_with_errors {
     label {
+      color: $error-value-color;
     }
 
     input[type=text],
     input[type=email],
     input[type=password] {
+      border-bottom-color: $error-value-color;
     }
 
     .error {
       display: block;
       font-weight: 500;
+      color: $error-value-color;
       margin-top: 4px;
     }
   }
@@ -157,6 +169,8 @@ code {
     width: 100%;
     border: 0;
     border-radius: 4px;
+    background: $ui-highlight-color;
+    color: $primary-text-color;
     font-size: 18px;
     line-height: inherit;
     height: auto;
@@ -176,20 +190,26 @@ code {
     }
 
     &:hover {
+      background-color: $ui-highlight-color;
     }
 
     &:active,
     &:focus {
       position: relative;
       top: 1px;
+      background-color: $ui-highlight-color;
     }
 
     &.negative {
+      background: $error-value-color;
+
       &:hover {
+        background-color: $error-value-color;
       }
 
       &:active,
       &:focus {
+        background-color: $error-value-color;
       }
     }
   }
@@ -200,9 +220,12 @@ code {
 }
 
 .flash-message {
+  background: $ui-base-color;
+  color: $ui-primary-color;
   border-radius: 4px;
   padding: 15px 10px;
   margin-bottom: 30px;
+  box-shadow: 0 0 5px rgba($base-shadow-color, 0.2);
   text-align: center;
 
   strong {
@@ -215,6 +238,7 @@ code {
   text-align: center;
 
   a {
+    color: $primary-text-color;
     text-decoration: none;
 
     &:hover {
@@ -227,6 +251,7 @@ code {
 .follow-prompt {
   margin-bottom: 30px;
   text-align: center;
+  color: $ui-primary-color;
 
   h2 {
     font-size: 16px;
@@ -234,6 +259,7 @@ code {
   }
 
   strong {
+    color: $ui-secondary-color;
     font-weight: 500;
   }
 }
@@ -244,8 +270,10 @@ code {
 
 .qr-code {
   flex: 0 0 auto;
+  background: $simple-background-color;
   padding: 4px;
   margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba($base-shadow-color, 0.2);
   display: inline-block;
 
   svg {
@@ -256,6 +284,7 @@ code {
 
 .qr-alternative {
   margin-left: 10px;
+  color: $ui-primary-color;
 
   samp {
     display: block;
@@ -276,11 +305,16 @@ code {
   .warning {
     max-width: 400px;
     box-sizing: border-box;
+    background: rgba($error-value-color, 0.5);
+    color: $primary-text-color;
+    text-shadow: 1px 1px 0 rgba($base-shadow-color, 0.3);
+    box-shadow: 0 2px 6px rgba($base-shadow-color, 0.4);
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 15px;
 
     a {
+      color: $primary-text-color;
       text-decoration: underline;
 
       &:hover,
