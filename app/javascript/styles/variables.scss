@@ -7,10 +7,10 @@ $warning-red: #ff5050;      // Sunset Orange
 $gold-star: #ca8f04;        // Dark Goldenrod
 
 // Values from the classic Mastodon UI
-$classic-base-color: #282c37;         // Midnight Express
-$classic-primary-color: #9baec8;      // Echo Blue
-$classic-secondary-color: #d9e1e8;    // Pattens Blue
-$classic-highlight-color: #2b90d9;    // Summer Sky
+$classic-base-color: hsl(224deg, 15.7%, 18.6% /* 10~60% */);       // Midnight Express
+$classic-primary-color: hsl(214.7deg, 29%, 69.6% /* 33~92% */);    // Echo Blue
+$classic-secondary-color: hsl(208deg, 24.6%, 88% /* 65~92% */);    // Pattens Blue
+$classic-highlight-color: hsl(205.2deg, 69.6%, 51% /* 5~90% */);   // Summer Sky
 
 // Variables for defaults in UI
 $base-shadow-color: $black !default;
