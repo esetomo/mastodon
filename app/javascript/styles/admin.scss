@@ -33,7 +33,7 @@
       a {
         display: block;
         padding: 15px 25px;
-        color: $primary-text-color--l100-a070;
+        color: rgba($primary-text-color, 0.7);
         text-decoration: none;
         transition: all 200ms linear;
         border-radius: 4px 0 0 4px;
@@ -44,18 +44,18 @@
 
         &:hover {
           color: $primary-text-color;
-          background-color: $ui-base-color--l095-a100;
+          background-color: darken($ui-base-color, 5%);
           transition: all 100ms linear;
         }
 
         &.selected {
-          background: $ui-base-color--l098-a100;
+          background: darken($ui-base-color, 2%);
           border-radius: 4px 0 0;
         }
       }
 
       ul {
-        background: $ui-base-color--l096-a100;
+        background: darken($ui-base-color, 4%);
         border-radius: 0 0 0 4px;
         margin: 0;
 
@@ -69,7 +69,7 @@
             border-radius: 0;
 
             &:hover {
-              background-color: $ui-highlight-color--l105-a100;
+              background-color: lighten($ui-highlight-color, 5%);
             }
           }
         }
@@ -185,7 +185,7 @@
 
     a {
       display: inline-block;
-      color: $primary-text-color--l100-a070;
+      color: rgba($primary-text-color, 0.7);
       text-decoration: none;
       text-transform: uppercase;
       font-size: 12px;
@@ -194,7 +194,7 @@
 
       &:hover {
         color: $primary-text-color;
-        border-bottom: 2px solid $ui-base-color--l105-a100;
+        border-bottom: 2px solid lighten($ui-base-color, 5%);
       }
 
       &.selected {

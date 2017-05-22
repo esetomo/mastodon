@@ -33,7 +33,7 @@ body {
   }
 
   &.admin {
-    background: $ui-base-color--l096-a100;
+    background: darken($ui-base-color, 4%);
     position: fixed;
     width: 100%;
     height: 100%;
