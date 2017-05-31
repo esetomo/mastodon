@@ -1,0 +1,114 @@
+body {
+  background: $ui-base-color;
+}
+
+$primary-text-color: $white;
+$ui-base-color: $classic-base-color;
+$ui-primary-color: $classic-primary-color;
+$ui-secondary-color: $classic-secondary-color;
+$ui-highlight-color: $classic-highlight-color;
+
+@function darken($color, $amount) {
+  @return hsl(hue($color), saturation($color), lightness($color) - $amount);
+}
+
+@function lighten($color, $amount){
+  @return hsl(hue($color), saturation($color), lightness($color) + $amount);
+}
+
+@import '../stream_entries';
+
+.card {
+  .name {
+    color: $primary-text-color;
+  }
+
+  .counter {
+    .counter-label {
+      color: $primary-text-color;
+    }
+    .counter-number {
+      color: $primary-text-color;
+      text-shadow: 0 0 2px $base-shadow-color;
+    }
+  }
+}
+
+.account__header__content {
+  color: $ui-primary-color;
+}
+
+.autosuggest-textarea__textarea,
+.spoiler-input__input {
+  color: $ui-base-color;
+}
+
+.autosuggest-textarea__suggestions {
+  background: $ui-secondary-color;
+  color: $ui-base-color;
+}
+
+.autosuggest-textarea__suggestions__item {
+  &:hover {
+    background: darken($ui-secondary-color, 10%);
+  }
+
+  &.selected {
+    background: $ui-highlight-color;
+    color: $base-border-color;
+  }
+}
+
+.privacy-dropdown__option {
+  color: $ui-base-color;
+
+  &:hover,
+  &.active {
+    background: $ui-highlight-color;
+    color: $primary-text-color;
+
+    .privacy-dropdown__option__content {
+      color: $primary-text-color;
+
+      strong {
+        color: $primary-text-color;
+      }
+    }
+  }
+
+  &.active:hover {
+    background: lighten($ui-highlight-color, 4%);
+  }
+}
+
+.privacy-dropdown__option__content {
+  color: darken($ui-primary-color, 24%);
+
+  strong {
+    color: $ui-base-color;
+  }
+}
+
+.compose-form__warning {
+  color: darken($ui-secondary-color, 65%);
+  background: $ui-primary-color;
+
+  strong {
+    color: darken($ui-secondary-color, 65%);
+  }
+
+  a {
+    color: darken($ui-primary-color, 33%);
+  }
+}
+
+body {
+  font-family: "Rounded Mplus 1c";
+}
+
+.account__avatar,
+.account__avatar-overlay-base,
+.account__avatar-overlay-overlay {
+    border-radius: 50%;
+}
+
