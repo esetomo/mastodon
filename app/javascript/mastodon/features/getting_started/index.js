@@ -67,7 +67,7 @@ export default class GettingStarted extends ImmutablePureComponent {
     }
 
     navItems = navItems.concat([
-      <ColumnLink key='4' icon='star' text={intl.formatMessage(messages.favourites)} to='/favourites' />,
+      <ColumnLink key='4' icon='iine--column' text={intl.formatMessage(messages.favourites)} to='/favourites' />,
       <ColumnLink key='5' icon='thumb-tack' text={intl.formatMessage(messages.pins)} to='/pinned' />,
     ]);
 

@@ -70,7 +70,7 @@ export default class Favourites extends ImmutablePureComponent {
     return (
       <Column ref={this.setRef}>
         <ColumnHeader
-          icon='star'
+          icon='iine--column'
           title={intl.formatMessage(messages.heading)}
           onPin={this.handlePin}
           onMove={this.handleMove}

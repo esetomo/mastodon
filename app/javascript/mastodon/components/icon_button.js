@@ -104,7 +104,7 @@ export default class IconButton extends React.PureComponent {
             style={style}
             tabIndex={tabIndex}
           >
-            <i style={{ transform: `rotate(${rotate}deg)` }} className={`fa fa-fw fa-${icon}`} aria-hidden='true' />
+            <i style={{ transform: `rotate(${rotate}deg)` }} className={`fa fa-fw fa-${icon} ${active ? 'active' : 'inactive'}`} aria-hidden='true' />
           </button>
         }
       </Motion>
