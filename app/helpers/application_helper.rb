@@ -27,8 +27,7 @@ module ApplicationHelper
   end
 
   def favicon_path
-    env_suffix = Rails.env.production? ? '' : '-dev'
-    "/favicon#{env_suffix}.ico"
+    Rails.env.production? ? asset_pack_path("mayo.svg") : '/favicon-dev.ico'
   end
 
   def title
