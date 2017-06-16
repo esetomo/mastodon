@@ -1,0 +1,38 @@
+body {
+  background: $ui-base-color;
+  font-family: "Rounded Mplus 1c";
+}
+
+.account__avatar,
+.account__avatar-overlay-base,
+.account__avatar-overlay-overlay,
+.activity-stream .status.light .status__avatar img {
+  border-radius: 50%;
+}
+
+.drawer__header,
+.search__input,
+.drawer__pager {
+  border-radius: 16px;
+}
+
+.column {
+  .column-header,
+  .column-header__wrapper,
+  .column-back-button {
+    border-top-left-radius: 16px;	
+    border-top-right-radius: 16px;	
+    overflow: hidden;
+  }
+}
+
+.card {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;  
+}
+
+.activity-stream {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+}
