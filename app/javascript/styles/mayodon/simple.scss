@@ -4,7 +4,7 @@ $ui-primary-color: $classic-primary-color;
 $ui-secondary-color: $classic-secondary-color;
 $ui-highlight-color: $classic-highlight-color;
 
-@import '../stream_entries';
+@import '../mastodon/stream_entries';
 
 .card {
   .name {
